@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
     private MediaPlayer mediaPlayer;
     private MediaPlayer mediaPlayerClick;
     private MediaPlayer mediaPlayerResultat; //reproductor per sons de resultat (guanyar o perdre)
-    private static final int LIMIT_VICTORIA = 6000;
+    private static final int LIMIT_VICTORIA = 10000;
     private final String[] sectors = {
             "*1", "*2", "*2", "*2", "*3", "*1", "*3", "*3" //valors ruleta per guanyar rapid
             //"-1", "-2", "/2", "/2", "-3", "-1", "-3", "-3" //valors ruleta per perdre rapid

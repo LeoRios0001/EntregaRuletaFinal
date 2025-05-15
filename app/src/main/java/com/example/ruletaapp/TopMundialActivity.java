@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -42,10 +43,12 @@ public class TopMundialActivity extends AppCompatActivity {
                 FirestoreResponse resposta = RetrofitClient.getApi().getPuntuacionsFirestore().execute().body();
                 if (resposta != null) {
                     List<Puntuacio> llista = FirestoreMapper.convertirResposta(resposta);
+                    Collections.sort(llista, (p1, p2) -> Integer.compare(p2.getMonedes(), p1.getMonedes()));
 
                     runOnUiThread(() -> {
                         topPuntuacions.clear();
-                        topPuntuacions.addAll(llista);
+                        int limit = Math.min(10, llista.size());
+                        topPuntuacions.addAll(llista.subList(0, limit));
                         adapter.notifyDataSetChanged();
                     });
                 } else {
