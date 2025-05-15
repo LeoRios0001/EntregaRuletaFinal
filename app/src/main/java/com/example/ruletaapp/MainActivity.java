@@ -82,9 +82,9 @@ public class MainActivity extends AppCompatActivity {
     private MediaPlayer mediaPlayerResultat; //reproductor per sons de resultat (guanyar o perdre)
     private static final int LIMIT_VICTORIA = 6000;
     private final String[] sectors = {
-            //"*1", "*2", "*2", "*2", "*3", "*1", "*3", "*3" //valors ruleta per guanyar rapid
+            "*1", "*2", "*2", "*2", "*3", "*1", "*3", "*3" //valors ruleta per guanyar rapid
             //"-1", "-2", "/2", "/2", "-3", "-1", "-3", "-3" //valors ruleta per perdre rapid
-            "+1", "-2", "*2", "/2", "+3", "-1", "*3", "-3"  // valors normals
+            //"+1", "-2", "*2", "/2", "+3", "-1", "*3", "-3"  // valors normals
     };
     private static final int REQUEST_LOCATION_PERMISSION = 123;
     private FusedLocationProviderClient fusedLocationClient;
@@ -202,7 +202,7 @@ public class MainActivity extends AppCompatActivity {
                 Puntuacio puntuacio = new Puntuacio(email, monedes, timestamp);
 
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
-                db.collection("puntuacions")
+                db.collection("top_mundial")
                         .add(puntuacio)
                         .addOnSuccessListener(documentReference -> Log.d("FIRESTORE", "Puntuació pujada correctament"))
                         .addOnFailureListener(e -> Log.e("FIRESTORE", "Error pujant la puntuació", e));
@@ -302,7 +302,7 @@ public class MainActivity extends AppCompatActivity {
                             Puntuacio puntuacio = new Puntuacio(email, monedes, timestamp);
 
                             FirebaseFirestore db = FirebaseFirestore.getInstance();
-                            db.collection("puntuacions")
+                            db.collection("top_mundial")
                                     .add(puntuacio)
                                     .addOnSuccessListener(documentReference -> Log.d("FIRESTORE", "Puntuació pujada correctament"))
                                     .addOnFailureListener(e -> Log.e("FIRESTORE", "Error pujant la puntuació", e));
